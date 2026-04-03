@@ -71,7 +71,7 @@ const TIMELINE: TimelineItem[] = [
   {
     time: "Step 04",
     title: "Free Session",
-    description: "අප්‍රේල් 4 වනදා රාත්‍රී 9:00 ට පැවැත්වෙන නොමිලේ Zoom වැඩසටහන සහ සුවිශේෂී වට්ටම්.",
+    description: "නොමිලේ Zoom වැඩසටහන සහ සුවිශේෂී වට්ටම්.",
     icon: Target
   },
   {
