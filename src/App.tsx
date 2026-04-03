@@ -180,7 +180,7 @@ const Contact = () => {
             <form onSubmit={handleRegistration} className="space-y-5">
               <input name="userName" type="text" placeholder="Full Name" required className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-white/30 transition-all" />
               <input name="userEmail" type="email" placeholder="Email Address" required className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-white/30 transition-all" />
-              <button type="submit" className="w-full bg-white text-orange-600 font-black py-5 rounded-2xl hover:bg-orange-50 transition-all text-lg shadow-xl">Get Discount 🚀</button>
+              <button type="submit" className="w-full bg-white text-orange-600 font-black py-5 rounded-2xl hover:bg-orange-50 transition-all text-lg shadow-xl">Get 30% Discount 🚀</button>
             </form>
           </div>
         </div>
