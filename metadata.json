@@ -1,0 +1,8 @@
+{
+  "name": "Keltix AI Academy",
+  "description": "Sri Lanka's leading AI education platform. Learn Artificial Intelligence with expert mentors and state-of-the-art tools.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
