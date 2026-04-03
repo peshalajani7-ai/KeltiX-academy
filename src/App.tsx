@@ -28,7 +28,10 @@ import {
   Key,
   Volume2,
   VolumeX,
-  StopCircle
+  StopCircle,
+  Sparkles,
+  Target,
+  Rocket
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from './lib/utils';
@@ -42,29 +45,40 @@ interface TimelineItem {
   time: string;
   title: string;
   description: string;
+  icon: any;
 }
 
 // --- Constants ---
 const TIMELINE: TimelineItem[] = [
   {
-    title: "හැඳින්වීම (Introduction)",
-    description: "ආයුබෝවන්! මම Keltix එකෙන්. ලංකාවේ AI අධ්යාපන ක්ෂේත්රයේ නවීකරණය අරඹමින් අපි අරන් එන Artificial Intelligence course එක ගැනයි මේ කියන්න යන්නේ."
+    time: "Step 01",
+    title: "හැඳින්වීම",
+    description: "ලංකාවේ AI අධ්‍යාපන ක්ෂේත්‍රයේ නවීකරණය අරඹමින් KeltiX අප හඳුන්වා දෙන විශේෂිත වැඩසටහන.",
+    icon: Sparkles
   },
   {
-    title: "AI වල වැදගත්කම (Importance of AI)",
-    description: "ලෝකය වෙනස් වන ආකාරය සහ AI ඉගෙන ගැනීමෙන් ලැබෙන වාසි."
+    time: "Step 02",
+    title: "AI වැදගත්කම",
+    description: "වෙනස් වන ලෝකය සමඟ ඉදිරියට යන්න AI තාක්ෂණය අත්‍යවශ්‍ය වන ආකාරය සහ එහි වාසි.",
+    icon: Brain
   },
   {
+    time: "Step 03",
     title: "Course Benefits",
-    description: "අපේ කෝස් එක අවසානයේ ඔබට ලංකාවේ අනුමත වටිනා සහතික පත්රයක් හිමි වෙනවා. ඒ වගේම ක්ෂේත්රයේ ප්රවීණ AI mentor කෙනෙක්ගෙන් සෘජුවම ඉගෙන ගන්න අවස්ථාව ලැබෙනවා."
+    description: "ප්‍රවීණ AI mentor කෙනෙක්ගෙන් සෘජුවම ඉගෙන ගෙන වටිනා සහතික පත්‍රයක් ලබා ගැනීම.",
+    icon: Award
   },
   {
-    title: "Free Session & Offer",
-    description: "පළමු වැඩසටහන සම්පූර්ණයෙන්ම නොමිලේ Zoom ඔස්සේ පවත්වනවා. විශේෂම දේ තමයි, අදම ලියාපදිංචි වන අයට 30% ක සුවිශේෂී වට්ටමක් (Discount) හිමි වෙනවා."
+    time: "Step 04",
+    title: "Free Session",
+    description: "අප්‍රේල් 4 වනදා රාත්‍රී 9:00 ට පැවැත්වෙන නොමිලේ Zoom වැඩසටහන සහ සුවිශේෂී වට්ටම්.",
+    icon: Target
   },
   {
+    time: "Step 05",
     title: "Call to Action",
-    description: "දැන්ම සම්බන්ධ වෙන්න. 0741302643 අංකයට WhatsApp පණිවිඩයක් එවන්න. Keltix සමඟ ඔබේ අනාගතය අදම සැලසුම් කරන්න."
+    description: "දැන්ම සම්බන්ධ වෙන්න. KeltiX සමඟ ඔබේ අනාගත වෘත්තීය ගමන අදම ආරම්භ කරන්න.",
+    icon: Rocket
   }
 ];
 
@@ -81,22 +95,22 @@ const Navbar = () => {
 
   return (
     <nav className={cn(
-      "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4",
-      isScrolled ? "bg-black/80 backdrop-blur-md border-b border-white/10" : "bg-transparent"
+      "fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-6 py-4",
+      isScrolled ? "bg-black/60 backdrop-blur-xl border-b border-white/5" : "bg-transparent"
     )}>
       <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <div className="flex items-center gap-2">
-          <div className="w-10 h-10 bg-orange-500 rounded-lg flex items-center justify-center font-bold text-white text-xl">K</div>
-          <span className="text-white font-bold text-xl tracking-tight">KELTIX <span className="text-orange-500">AI</span></span>
+        <div className="flex items-center gap-2 group cursor-pointer">
+          <div className="w-11 h-11 bg-gradient-to-br from-orange-400 to-orange-600 rounded-xl flex items-center justify-center font-black text-white text-2xl shadow-lg shadow-orange-500/20 group-hover:scale-110 transition-transform">K</div>
+          <span className="text-white font-black text-2xl tracking-tighter">KELTIX <span className="text-orange-500">AI</span></span>
         </div>
-        <div className="hidden md:flex items-center gap-8 text-white/70 font-medium">
-          <a href="#home" className="hover:text-white transition-colors">Home</a>
-          <a href="#course" className="hover:text-white transition-colors">Course</a>
-          <a href="#tools" className="hover:text-white transition-colors">AI Tools</a>
-          <a href="#contact" className="hover:text-white transition-colors">Contact</a>
+        <div className="hidden md:flex items-center gap-10 text-white/60 font-semibold text-sm uppercase tracking-widest">
+          <a href="#home" className="hover:text-orange-500 transition-colors">Home</a>
+          <a href="#course" className="hover:text-orange-500 transition-colors">Course</a>
+          <a href="#tools" className="hover:text-orange-500 transition-colors">Tools</a>
+          <a href="#contact" className="hover:text-orange-500 transition-colors">Register</a>
         </div>
-        <button className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-full font-semibold transition-all transform hover:scale-105 active:scale-95">
-          Enroll Now
+        <button className="bg-white text-black hover:bg-orange-500 hover:text-white px-7 py-2.5 rounded-full font-bold transition-all transform hover:scale-105 active:scale-95 shadow-xl">
+          Get Started
         </button>
       </div>
     </nav>
@@ -105,44 +119,65 @@ const Navbar = () => {
 
 const Hero = () => {
   return (
-    <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-black">
+    <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-zinc-950">
+      {/* Background with higher quality image and darker overlay */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent z-10" />
-        <img 
-          src="https://ais-dev-yrb46yue5asad7egklkeub-786221018123.asia-southeast1.run.app/input_file_0.png" 
-          alt="Keltix AI Labs" 
-          className="w-full h-full object-cover opacity-60"
-          referrerPolicy="no-referrer"
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/80 to-zinc-950 z-10" />
+        <motion.img 
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 10, repeat: Infinity, repeatType: "reverse" }}
+          src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=2000" 
+          alt="AI Visualization" 
+          className="w-full h-full object-cover"
         />
       </div>
       
       <div className="relative z-20 max-w-7xl mx-auto px-6 w-full">
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-2xl"
-        >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-500 text-sm font-semibold mb-6">
-            <Zap size={14} />
-            <span>Sri Lanka's #1 AI Education Platform</span>
-          </div>
-          <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight mb-6">
-            Future-Proof Your <span className="text-orange-500">Career</span> with AI
-          </h1>
-          <p className="text-xl text-white/60 mb-10 leading-relaxed">
-            ලංකාවේ AI අධ්යාපන ක්ෂේත්රයේ නවීකරණය අරඹමින් Keltix අපි අරන් එන සුවිශේෂී Artificial Intelligence course එක සමඟ අදම එක්වන්න.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center gap-2 transition-all group">
-              Get Started Free
-              <ChevronRight className="group-hover:translate-x-1 transition-transform" />
-            </button>
-            <button className="bg-white/10 hover:bg-white/20 text-white border border-white/10 px-8 py-4 rounded-xl font-bold text-lg backdrop-blur-sm transition-all">
-              View Course Details
-            </button>
-          </div>
-        </motion.div>
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-400 text-xs font-bold uppercase tracking-widest mb-8">
+              <Zap size={14} className="fill-orange-400" />
+              <span>Next-Gen AI Academy</span>
+            </div>
+            <h1 className="text-6xl md:text-8xl font-black text-white leading-[0.9] mb-8">
+              Master the <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-yellow-500">
+                Future of AI
+              </span>
+            </h1>
+            <p className="text-xl text-white/50 mb-10 leading-relaxed max-w-xl">
+              කෘත්‍රිම බුද්ධිය (AI) සෙල්ලමක් නෙවෙයි, ඒක ඔබේ අනාගතය. ලංකාවේ ප්‍රමුඛතම AI පාඨමාලාව සමඟ අදම එක්වන්න.
+            </p>
+            <div className="flex flex-wrap gap-5">
+              <button className="bg-orange-500 hover:bg-orange-600 text-white px-10 py-5 rounded-2xl font-black text-lg flex items-center gap-3 transition-all shadow-2xl shadow-orange-500/20 group">
+                Register Free
+                <ChevronRight className="group-hover:translate-x-1 transition-transform" />
+              </button>
+              <button className="bg-white/5 hover:bg-white/10 text-white border border-white/10 px-10 py-5 rounded-2xl font-bold text-lg backdrop-blur-md transition-all">
+                Course Details
+              </button>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="hidden md:block relative"
+          >
+            <div className="absolute -inset-4 bg-orange-500/20 rounded-full blur-3xl animate-pulse" />
+            <img 
+              src="https://images.unsplash.com/photo-1620712943543-bcc4638d9985?auto=format&fit=crop&q=80&w=800" 
+              alt="AI Bot" 
+              className="relative z-10 w-full h-auto rounded-[3rem] shadow-2xl border border-white/10"
+            />
+          </motion.div>
+        </div>
       </div>
     </section>
   );
@@ -150,26 +185,32 @@ const Hero = () => {
 
 const Timeline = () => {
   return (
-    <section id="course" className="py-24 bg-zinc-950 border-y border-white/5">
+    <section id="course" className="py-32 bg-zinc-950">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-white mb-4">Course Roadmap</h2>
-          <p className="text-white/50 max-w-2xl mx-auto">Our comprehensive curriculum designed to take you from basics to advanced AI implementation.</p>
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6">
+          <div>
+            <h2 className="text-5xl font-black text-white mb-4">Course Roadmap</h2>
+            <p className="text-white/40 text-lg">අපේ පියවරෙන් පියවර ඉගැන්වීමේ ක්‍රමය.</p>
+          </div>
+          <div className="h-px flex-1 bg-white/10 mx-12 hidden md:block" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
           {TIMELINE.map((item, index) => (
             <motion.div 
               key={index}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="relative p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-orange-500/50 transition-all group"
+              className="group relative p-8 rounded-[2.5rem] bg-white/[0.02] border border-white/5 hover:bg-white/[0.05] hover:border-orange-500/30 transition-all duration-500 overflow-hidden"
             >
-              <div className="text-orange-500 font-mono text-sm mb-4">{item.time}</div>
-              <h3 className="text-white font-bold text-lg mb-3 group-hover:text-orange-500 transition-colors">{item.title}</h3>
-              <p className="text-white/40 text-sm leading-relaxed">{item.description}</p>
+              <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity">
+                <item.icon size={80} />
+              </div>
+              <div className="text-orange-500 font-black text-sm tracking-tighter mb-6">{item.time}</div>
+              <h3 className="text-white font-bold text-xl mb-4 group-hover:text-orange-400 transition-colors">{item.title}</h3>
+              <p className="text-white/30 text-sm leading-relaxed">{item.description}</p>
             </motion.div>
           ))}
         </div>
@@ -194,22 +235,24 @@ const ToolCard = ({
   <button 
     onClick={onClick}
     className={cn(
-      "flex flex-col items-start p-6 rounded-2xl border transition-all text-left",
+      "w-full flex items-center gap-5 p-5 rounded-2xl border transition-all duration-300 group",
       active 
-        ? "bg-orange-500 border-orange-500 text-white shadow-lg shadow-orange-500/20" 
-        : "bg-white/5 border-white/10 text-white/70 hover:bg-white/10 hover:border-white/20"
+        ? "bg-orange-500 border-orange-400 text-white shadow-2xl shadow-orange-500/40 translate-x-2" 
+        : "bg-white/[0.03] border-white/5 text-white/60 hover:bg-white/[0.08] hover:border-white/10"
     )}
   >
     <div className={cn(
-      "w-12 h-12 rounded-xl flex items-center justify-center mb-4",
+      "w-14 h-14 rounded-xl flex items-center justify-center shrink-0 transition-transform group-hover:scale-110",
       active ? "bg-white/20" : "bg-orange-500/10 text-orange-500"
     )}>
       <Icon size={24} />
     </div>
-    <h3 className="font-bold text-lg mb-2">{title}</h3>
-    <p className={cn("text-sm leading-relaxed", active ? "text-white/80" : "text-white/40")}>
-      {description}
-    </p>
+    <div className="text-left">
+      <h3 className="font-bold text-lg">{title}</h3>
+      <p className={cn("text-xs leading-tight opacity-50", active ? "text-white" : "")}>
+        {description}
+      </p>
+    </div>
   </button>
 );
 
@@ -238,6 +281,12 @@ const ToolInterface = ({ type }: { type: ToolType }) => {
       reader.onload = () => resolve(reader.result as string);
       reader.onerror = (error) => reject(error);
     });
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setFile(e.target.files[0]);
+    }
   };
 
   const handleSubmit = async () => {
@@ -285,21 +334,20 @@ const ToolInterface = ({ type }: { type: ToolType }) => {
   if ((type === 'video' || type === 'music') && !hasKey) {
     return (
       <div className="h-full flex flex-col items-center justify-center text-center p-12">
-        <div className="w-20 h-20 bg-orange-500/10 rounded-full flex items-center justify-center text-orange-500 mb-6">
-          <Key size={40} />
+        <div className="w-24 h-24 bg-orange-500/10 rounded-3xl flex items-center justify-center text-orange-500 mb-8 border border-orange-500/20">
+          <Key size={44} />
         </div>
-        <h3 className="text-2xl font-bold text-white mb-4">API Key Required</h3>
-        <p className="text-white/40 mb-8 max-w-md">To use Veo video generation or Lyria music generation, you must select your own Gemini API key.</p>
+        <h3 className="text-3xl font-black text-white mb-4">API Key Required</h3>
+        <p className="text-white/40 mb-8 max-w-sm">To use premium features like Veo or Lyria, please select your Gemini API key.</p>
         <button 
           onClick={async () => {
             await window.aistudio.openSelectKey();
             setHasKey(true);
           }}
-          className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-xl font-bold transition-all"
+          className="bg-white text-black hover:bg-orange-500 hover:text-white px-10 py-4 rounded-2xl font-black transition-all shadow-2xl"
         >
-          Select API Key
+          Activate Now
         </button>
-        <a href="https://ai.google.dev/gemini-api/docs/billing" target="_blank" className="text-orange-500/60 text-sm mt-4 hover:underline">Learn about billing</a>
       </div>
     );
   }
@@ -310,12 +358,19 @@ const ToolInterface = ({ type }: { type: ToolType }) => {
 
   return (
     <div className="h-full flex flex-col">
-      <div className="flex-1 overflow-y-auto space-y-6 pb-20">
+      <div className="flex-1 overflow-y-auto space-y-6 pb-24 scrollbar-hide">
+        {!result && !mediaUrl && !loading && (
+          <div className="h-full flex flex-col items-center justify-center text-center opacity-20 py-20">
+            <Sparkles size={60} className="mb-4" />
+            <p className="text-white font-medium">Ready for your prompt...</p>
+          </div>
+        )}
+
         {result && (
           <motion.div 
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-white/5 border border-white/10 rounded-2xl p-6 text-white/80 prose prose-invert max-w-none"
+            className="bg-white/5 border border-white/10 rounded-3xl p-8 text-white/80 prose prose-invert max-w-none shadow-inner"
           >
             <ReactMarkdown>{result}</ReactMarkdown>
           </motion.div>
@@ -325,41 +380,44 @@ const ToolInterface = ({ type }: { type: ToolType }) => {
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="bg-white/5 border border-white/10 rounded-2xl p-6"
+            className="bg-zinc-800/50 border border-white/10 rounded-3xl p-4 overflow-hidden"
           >
             {type === 'music' ? (
-              <div className="flex flex-col items-center gap-4">
-                <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center text-white">
-                  <Music size={32} />
+              <div className="flex flex-col items-center gap-6 py-10">
+                <div className="w-20 h-20 bg-orange-500 rounded-full flex items-center justify-center text-white shadow-2xl animate-pulse">
+                  <Music size={40} />
                 </div>
-                <audio src={mediaUrl} controls className="w-full" />
+                <audio src={mediaUrl} controls className="w-full max-w-md accent-orange-500" />
               </div>
             ) : (
-              <video src={mediaUrl} controls className="w-full rounded-xl shadow-2xl" />
+              <video src={mediaUrl} controls className="w-full rounded-2xl shadow-2xl aspect-video object-cover" />
             )}
           </motion.div>
         )}
 
         {loading && (
           <div className="flex flex-col items-center justify-center py-20">
-            <Loader2 className="animate-spin text-orange-500 mb-4" size={40} />
-            <p className="text-white/40">Processing your request... This may take a moment.</p>
+            <div className="relative">
+              <div className="w-16 h-16 border-4 border-orange-500/20 border-t-orange-500 rounded-full animate-spin" />
+              <Brain className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-orange-500" size={24} />
+            </div>
+            <p className="text-orange-500 font-bold mt-6 tracking-widest animate-pulse">AI IS THINKING...</p>
           </div>
         )}
       </div>
 
-      <div className="absolute bottom-8 left-8 right-8">
-        <div className="bg-zinc-800 border border-white/10 rounded-2xl p-2 flex items-center gap-2 shadow-2xl">
+      <div className="absolute bottom-6 left-6 right-6">
+        <div className="bg-black/40 backdrop-blur-3xl border border-white/10 rounded-[2rem] p-3 flex items-center gap-3 shadow-2xl">
           {(type === 'image-analysis' || type === 'video-analysis' || type === 'video') && (
-            <label className="p-3 text-white/40 hover:text-white cursor-pointer transition-colors">
-              <Upload size={20} />
+            <label className="w-12 h-12 flex items-center justify-center text-white/40 hover:text-white hover:bg-white/10 rounded-2xl cursor-pointer transition-all shrink-0">
+              <Upload size={22} />
               <input type="file" className="hidden" onChange={handleFileChange} accept={type === 'video-analysis' ? "video/*" : "image/*"} />
             </label>
           )}
           <input 
             type="text" 
-            placeholder={file ? `File selected: ${file.name}` : "Describe what you want to do..."}
-            className="flex-1 bg-transparent border-none focus:ring-0 text-white px-4 py-2 placeholder:text-white/20"
+            placeholder={file ? `Attached: ${file.name}` : "Ask anything or describe what to generate..."}
+            className="flex-1 bg-transparent border-none focus:ring-0 text-white px-4 py-3 placeholder:text-white/20 font-medium"
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
@@ -367,9 +425,9 @@ const ToolInterface = ({ type }: { type: ToolType }) => {
           <button 
             onClick={handleSubmit}
             disabled={loading || (!prompt && !file)}
-            className="bg-orange-500 hover:bg-orange-600 disabled:opacity-50 disabled:hover:bg-orange-500 text-white p-3 rounded-xl transition-all"
+            className="bg-orange-500 hover:bg-orange-400 disabled:opacity-20 text-white w-12 h-12 rounded-2xl flex items-center justify-center transition-all shadow-lg shadow-orange-500/20"
           >
-            <Send size={20} />
+            <Send size={22} />
           </button>
         </div>
       </div>
@@ -396,21 +454,15 @@ const LiveConversation = () => {
         onopen: () => {
           setIsConnecting(false);
           setIsConnected(true);
-          console.log("Live session opened");
-          
-          // Start sending audio
           const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)({ sampleRate: 16000 });
           audioContextRef.current = audioContext;
           const source = audioContext.createMediaStreamSource(stream);
           const processor = audioContext.createScriptProcessor(4096, 1, 1);
-          
           source.connect(processor);
           processor.connect(audioContext.destination);
-          
           processor.onaudioprocess = (e) => {
             if (isMuted) return;
             const inputData = e.inputBuffer.getChannelData(0);
-            // Convert to 16-bit PCM
             const pcmData = new Int16Array(inputData.length);
             for (let i = 0; i < inputData.length; i++) {
               pcmData[i] = Math.max(-1, Math.min(1, inputData[i])) * 0x7FFF;
@@ -426,107 +478,83 @@ const LiveConversation = () => {
             const text = message.serverContent.modelTurn.parts[0].text;
             setTranscript(prev => [...prev, { role: 'model', text }]);
           }
-          
-          const base64Audio = message.serverContent?.modelTurn?.parts?.[0]?.inlineData?.data;
-          if (base64Audio && audioContextRef.current) {
-            // Playback logic would require more complex buffering
-            console.log("Received audio data");
-          }
         },
         onerror: (error: any) => {
-          console.error("Live session error:", error);
+          console.error(error);
           stopSession();
         },
         onclose: () => {
-          console.log("Live session closed");
           stopSession();
         }
       });
       setSession(newSession);
     } catch (error) {
-      console.error("Failed to connect to Live API:", error);
+      console.error(error);
       setIsConnecting(false);
     }
   };
 
   const stopSession = () => {
-    if (session) {
-      session.close();
-      setSession(null);
-    }
-    if (streamRef.current) {
-      streamRef.current.getTracks().forEach(track => track.stop());
-    }
+    if (session) session.close();
+    if (streamRef.current) streamRef.current.getTracks().forEach(track => track.stop());
     setIsConnected(false);
     setTranscript([]);
+    setSession(null);
   };
 
   return (
     <div className="h-full flex flex-col">
-      <div className="flex-1 overflow-y-auto space-y-4 p-4">
+      <div className="flex-1 overflow-y-auto space-y-4 p-6 scrollbar-hide">
         {transcript.length === 0 && !isConnecting && (
           <div className="h-full flex flex-col items-center justify-center text-center p-8">
-            <div className="w-16 h-16 bg-orange-500/10 rounded-full flex items-center justify-center text-orange-500 mb-4">
-              <Mic size={32} />
+            <div className="w-24 h-24 bg-orange-500/10 rounded-full flex items-center justify-center text-orange-500 mb-6 border border-orange-500/20">
+              <Mic size={40} className="animate-pulse" />
             </div>
-            <h3 className="text-xl font-bold text-white mb-2">Start a Voice Session</h3>
-            <p className="text-white/40 text-sm max-w-xs">Have a real-time conversation with our AI mentor about your learning path.</p>
+            <h3 className="text-2xl font-black text-white mb-3">Live AI Mentor</h3>
+            <p className="text-white/30 text-sm max-w-xs">සජීවීව AI ගුරුවරයෙකු සමඟ කතා කර ඔබේ ගැටළු විසඳා ගන්න.</p>
           </div>
         )}
 
         {transcript.map((msg, i) => (
           <motion.div 
             key={i}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: msg.role === 'user' ? 20 : -20 }}
+            animate={{ opacity: 1, x: 0 }}
             className={cn(
-              "max-w-[80%] p-4 rounded-2xl",
-              msg.role === 'user' ? "ml-auto bg-orange-500 text-white" : "mr-auto bg-white/5 text-white/80 border border-white/10"
+              "max-w-[85%] p-5 rounded-3xl font-medium",
+              msg.role === 'user' ? "ml-auto bg-orange-500 text-white shadow-xl shadow-orange-500/10" : "mr-auto bg-white/5 text-white/80 border border-white/10"
             )}
           >
             {msg.text}
           </motion.div>
         ))}
-        
-        {isConnecting && (
-          <div className="flex items-center gap-2 text-white/40 p-4">
-            <Loader2 className="animate-spin" size={16} />
-            Establishing secure connection...
-          </div>
-        )}
       </div>
 
-      <div className="p-8 flex flex-col items-center gap-6">
+      <div className="p-10 flex flex-col items-center gap-6">
         {!isConnected ? (
           <button 
             onClick={startSession}
             disabled={isConnecting}
-            className="w-24 h-24 bg-orange-500 rounded-full flex items-center justify-center text-white shadow-lg shadow-orange-500/40 hover:scale-105 active:scale-95 transition-all group"
+            className="w-24 h-24 bg-orange-500 rounded-full flex items-center justify-center text-white shadow-2xl shadow-orange-500/40 hover:scale-105 active:scale-95 transition-all group"
           >
-            {isConnecting ? <Loader2 className="animate-spin" size={32} /> : <Mic size={32} className="group-hover:scale-110 transition-transform" />}
+            {isConnecting ? <Loader2 className="animate-spin" size={32} /> : <Mic size={36} />}
           </button>
         ) : (
-          <div className="flex items-center gap-6">
-            <button 
-              onClick={() => setIsMuted(!isMuted)}
-              className="w-14 h-14 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all"
-            >
-              {isMuted ? <VolumeX size={24} /> : <Volume2 size={24} />}
+          <div className="flex items-center gap-8">
+            <button onClick={() => setIsMuted(!isMuted)} className="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center text-white hover:bg-white/10 transition-all">
+              {isMuted ? <VolumeX size={28} /> : <Volume2 size={28} />}
             </button>
             <div className="w-24 h-24 bg-orange-500 rounded-full flex items-center justify-center text-white relative">
-              <div className="absolute inset-0 bg-orange-500 rounded-full animate-ping opacity-20" />
-              <Mic size={32} />
+              <div className="absolute inset-[-12px] border-4 border-orange-500/30 rounded-full animate-ping" />
+              <Mic size={36} />
             </div>
-            <button 
-              onClick={stopSession}
-              className="w-14 h-14 bg-red-500/20 rounded-full flex items-center justify-center text-red-500 hover:bg-red-500/30 transition-all"
-            >
-              <StopCircle size={24} />
+            <button onClick={stopSession} className="w-16 h-16 bg-red-500/10 rounded-full flex items-center justify-center text-red-500 hover:bg-red-500/20 transition-all">
+              <StopCircle size={28} />
             </button>
           </div>
         )}
-        <p className="text-white/40 text-sm">
-          {!isConnected ? "Click to start voice conversation" : "Listening... Speak naturally"}
+        <p className="text-white/20 font-bold uppercase tracking-widest text-xs">
+          {!isConnected ? "Click to start session" : "Live - Speak Naturally"}
         </p>
       </div>
     </div>
@@ -537,69 +565,33 @@ const AITools = () => {
   const [activeTool, setActiveTool] = useState<ToolType>('live');
 
   return (
-    <section id="tools" className="py-24 bg-black">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row gap-12">
-          <div className="w-full md:w-1/3 space-y-4">
-            <div className="mb-8">
-              <h2 className="text-4xl font-bold text-white mb-4">Interactive AI Tools</h2>
-              <p className="text-white/50">Experience the power of Gemini 3.1 and Lyria directly in your browser.</p>
+    <section id="tools" className="py-32 bg-black relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-orange-500/5 rounded-full blur-[120px] -mr-64 -mt-64" />
+      
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="flex flex-col md:flex-row gap-16">
+          <div className="w-full md:w-1/3 space-y-3">
+            <div className="mb-12">
+              <div className="text-orange-500 font-black text-sm uppercase tracking-widest mb-4">Hands-on Experience</div>
+              <h2 className="text-5xl font-black text-white mb-6">Play with <br />AI Power</h2>
+              <p className="text-white/40 leading-relaxed">අපේ වෙබ් අඩවිය තුළදීම අතිනවීන AI මෙවලම් අත්හදා බලන්න. Gemini 3.1 තාක්ෂණය සමඟ මේ සියල්ල ක්‍රියාත්මක වේ.</p>
             </div>
             
-            <ToolCard 
-              title="Live AI Tutor" 
-              description="Real-time voice conversation with our AI mentor."
-              icon={Mic}
-              active={activeTool === 'live'}
-              onClick={() => setActiveTool('live')}
-            />
-            <ToolCard 
-              title="Music Generator" 
-              description="Create custom study tracks using Lyria Pro."
-              icon={Music}
-              active={activeTool === 'music'}
-              onClick={() => setActiveTool('music')}
-            />
-            <ToolCard 
-              title="Image to Video" 
-              description="Animate your concepts into cinematic videos."
-              icon={Video}
-              active={activeTool === 'video'}
-              onClick={() => setActiveTool('video')}
-            />
-            <ToolCard 
-              title="Image Analysis" 
-              description="Deep understanding of visual data with Gemini Pro."
-              icon={ImageIcon}
-              active={activeTool === 'image-analysis'}
-              onClick={() => setActiveTool('image-analysis')}
-            />
-            <ToolCard 
-              title="Video Analysis" 
-              description="Extract key insights from any video content."
-              icon={FileVideo}
-              active={activeTool === 'video-analysis'}
-              onClick={() => setActiveTool('video-analysis')}
-            />
-            <ToolCard 
-              title="High Thinking Mode" 
-              description="Solve complex reasoning tasks with maximum precision."
-              icon={Brain}
-              active={activeTool === 'thinking'}
-              onClick={() => setActiveTool('thinking')}
-            />
+            <ToolCard title="Live AI Tutor" description="Real-time voice mentor" icon={Mic} active={activeTool === 'live'} onClick={() => setActiveTool('live')} />
+            <ToolCard title="Music Generator" description="AI powered melodies" icon={Music} active={activeTool === 'music'} onClick={() => setActiveTool('music')} />
+            <ToolCard title="Video Creator" description="Cinematic generations" icon={Video} active={activeTool === 'video'} onClick={() => setActiveTool('video')} />
+            <ToolCard title="Intelligence Lab" description="Complex problem solving" icon={Brain} active={activeTool === 'thinking'} onClick={() => setActiveTool('thinking')} />
           </div>
 
-          <div className="w-full md:w-2/3 bg-zinc-900/50 border border-white/10 rounded-3xl p-8 min-h-[600px] relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-transparent pointer-events-none" />
-            
+          <div className="w-full md:w-2/3 bg-zinc-900/40 border border-white/5 rounded-[3rem] p-6 md:p-10 min-h-[700px] relative overflow-hidden shadow-2xl backdrop-blur-sm">
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-orange-500/50 to-transparent" />
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTool}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                className="h-full flex flex-col"
+                initial={{ opacity: 0, scale: 0.98 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 1.02 }}
+                className="h-full"
               >
                 <ToolInterface type={activeTool} />
               </motion.div>
@@ -614,68 +606,45 @@ const AITools = () => {
 const Contact = () => {
   const handleRegistration = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
-    // Form එකේ දත්ත ලබා ගැනීම
     const formData = new FormData(e.currentTarget);
     const name = formData.get('userName');
     const email = formData.get('userEmail');
-    
-    // WhatsApp පණිවිඩය සකස් කිරීම
     const message = `Hello KeltiX Academy! 🚀%0A%0AI want to claim my 30% Discount.%0A%0A👤 *Name:* ${name}%0A📧 *Email:* ${email}%0A%0APlease send me the registration details!`;
-    
-    // WhatsApp එකට යොමු කිරීම
     window.open(`https://wa.me/94741302643?text=${message}`, '_blank');
   };
 
   return (
-    <section id="contact" className="py-24 bg-zinc-950">
+    <section id="contact" className="py-32 bg-zinc-950">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="bg-orange-500 rounded-[3rem] p-12 md:p-20 flex flex-col md:flex-row items-center justify-between gap-12 overflow-hidden relative">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -mr-48 -mt-48" />
+        <div className="bg-gradient-to-br from-orange-500 to-orange-700 rounded-[4rem] p-12 md:p-24 flex flex-col md:flex-row items-center justify-between gap-16 overflow-hidden relative shadow-2xl shadow-orange-500/20">
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white/5 rounded-full blur-[100px] -mr-64 -mt-64" />
           
-          <div className="relative z-10 max-w-xl">
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Ready to start your AI journey?</h2>
-            <p className="text-white/80 text-lg mb-8">
-              අදම ලියාපදිංචි වන අයට 30% ක සුවිශේෂී වට්ටමක් හිමි වේ. දැන්ම සම්බන්ධ වෙන්න.
+          <div className="relative z-10 max-w-xl text-center md:text-left">
+            <h2 className="text-5xl md:text-7xl font-black text-white mb-8 tracking-tighter">Claim Your <br />Spot Today!</h2>
+            <p className="text-white/80 text-xl mb-12 font-medium">
+              පළමු සිසුන් කණ්ඩායම සඳහා හිමිවන 30% සුවිශේෂී වට්ටම ලබා ගැනීමට දැන්ම ඔබෙ නම ඇතුළත් කරන්න.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a 
-                href="https://wa.me/94741302643" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="bg-white text-orange-500 px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 hover:bg-zinc-100 transition-all"
-              >
-                <Phone size={20} />
-                WhatsApp Us
-              </a>
-              <div className="flex items-center gap-3 text-white font-mono text-xl">
-                0741302643
+            <div className="flex flex-col sm:flex-row items-center gap-6 justify-center md:justify-start">
+              <div className="flex flex-col">
+                <span className="text-white/60 text-xs font-bold uppercase mb-1">Direct Hotline</span>
+                <span className="text-white text-3xl font-black">074 130 2643</span>
               </div>
             </div>
           </div>
 
-          <div className="relative z-10 bg-black/20 backdrop-blur-xl border border-white/20 p-8 rounded-3xl w-full max-w-sm">
-            <h3 className="text-white font-bold text-xl mb-6">Quick Registration</h3>
-            <form onSubmit={handleRegistration} className="space-y-4">
-              <input 
-                name="userName" 
-                type="text" 
-                placeholder="Your Name" 
-                required
-                className="w-full bg-white/10 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:border-white/40" 
-              />
-              <input 
-                name="userEmail" 
-                type="email" 
-                placeholder="Email Address" 
-                required
-                className="w-full bg-white/10 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:border-white/40" 
-              />
-              <button 
-                type="submit" 
-                className="w-full bg-white text-orange-500 font-bold py-4 rounded-xl hover:bg-zinc-100 transition-all"
-              >
-                Claim 30% Discount
+          <div className="relative z-10 bg-black/30 backdrop-blur-2xl border border-white/20 p-10 rounded-[3rem] w-full max-w-md shadow-inner">
+            <h3 className="text-white font-black text-2xl mb-8">Quick Entry</h3>
+            <form onSubmit={handleRegistration} className="space-y-5">
+              <div className="space-y-2">
+                <label className="text-white/40 text-[10px] font-bold uppercase ml-4">Full Name</label>
+                <input name="userName" type="text" placeholder="John Doe" required className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/10 focus:outline-none focus:border-white/30 transition-all" />
+              </div>
+              <div className="space-y-2">
+                <label className="text-white/40 text-[10px] font-bold uppercase ml-4">Email Address</label>
+                <input name="userEmail" type="email" placeholder="john@example.com" required className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/10 focus:outline-none focus:border-white/30 transition-all" />
+              </div>
+              <button type="submit" className="w-full bg-white text-orange-600 font-black py-5 rounded-2xl hover:bg-orange-50 transition-all text-lg shadow-xl">
+                Get Discount 🚀
               </button>
             </form>
           </div>
@@ -686,18 +655,19 @@ const Contact = () => {
 };
 
 const Footer = () => (
-  <footer className="py-12 bg-black border-t border-white/5">
-    <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-      <div className="flex items-center gap-2">
-        <div className="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center font-bold text-white text-lg">K</div>
-        <span className="text-white font-bold text-lg tracking-tight">KELTIX <span className="text-orange-500">AI</span></span>
+  <footer className="py-16 bg-black border-t border-white/5">
+    <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-10">
+      <div className="flex items-center gap-3">
+        <div className="w-10 h-10 bg-orange-500 rounded-xl flex items-center justify-center font-black text-white text-xl">K</div>
+        <span className="text-white font-black text-xl tracking-tighter uppercase">Keltix <span className="text-orange-500">Academy</span></span>
       </div>
-      <div className="text-white/40 text-sm">
-        ©️ 2026 Keltix AI Academy. All rights reserved.
+      <div className="text-white/20 text-sm font-medium">
+        © 2026 KeltiX Academy. Sri Lanka's Leading AI Hub.
       </div>
-      <div className="flex gap-6 text-white/40">
-        <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-        <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+      <div className="flex gap-8 text-white/40 font-bold text-xs uppercase tracking-widest">
+        <a href="#" className="hover:text-white transition-colors">Privacy</a>
+        <a href="#" className="hover:text-white transition-colors">Terms</a>
+        <a href="#" className="hover:text-white transition-colors">Support</a>
       </div>
     </div>
   </footer>
@@ -705,7 +675,7 @@ const Footer = () => (
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-black font-sans selection:bg-orange-500 selection:text-white">
+    <div className="min-h-screen bg-black font-sans selection:bg-orange-500 selection:text-white antialiased">
       <Navbar />
       <main>
         <Hero />
