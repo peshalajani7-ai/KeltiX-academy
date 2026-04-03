@@ -34,7 +34,7 @@ const TIMELINE: TimelineItem[] = [
   { time: "Step 01", title: "හැඳින්වීම", description: "ලංකාවේ AI අධ්‍යාපන ක්ෂේත්‍රයේ නවීකරණය අරඹමින් KeltiX අප හඳුන්වා දෙන විශේෂිත වැඩසටහන.", icon: Sparkles },
   { time: "Step 02", title: "AI වැදගත්කම", description: "වෙනස් වන ලෝකය සමඟ ඉදිරියට යන්න AI තාක්ෂණය අත්‍යවශ්‍ය වන ආකාරය සහ එහි වාසි.", icon: Brain },
   { time: "Step 03", title: "Course Benefits", description: "ප්‍රවීණ AI mentor කෙනෙක්ගෙන් සෘජුවම ඉගෙන ගෙන වටිනා සහතික පත්‍රයක් ලබා ගැනීම.", icon: Award },
-  { time: "Step 04", title: "Free Session", description: "අප්‍රේල් 4 වනදා රාත්‍රී 9:00 ට පැවැත්වෙන නොමිලේ Zoom වැඩසටහන සහ සුවිශේෂී වට්ටම්.", icon: Target },
+  { time: "Step 04", title: "Free Session", description: "නොමිලේ Zoom වැඩසටහන සහ සුවිශේෂී වට්ටම්.", icon: Target },
   { time: "Step 05", title: "Call to Action", description: "දැන්ම සම්බන්ධ වෙන්න. KeltiX සමඟ ඔබේ අනාගත වෘත්තීය ගමන අදම ආරම්භ කරන්න.", icon: Rocket }
 ];
 
